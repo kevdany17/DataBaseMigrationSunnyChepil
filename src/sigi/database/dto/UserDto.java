@@ -6,6 +6,8 @@ public class UserDto {
 	
 	private String password;
 
+   /*  private String profile;*/
+
 	public String getUserName() {
 		return userName;
 	}
@@ -22,6 +24,11 @@ public class UserDto {
 		this.password = password;
 	}
 	
-	
+	/*public String getProfile(){
+		return profile;
+	}
+	public void SetProfile(String profile){
+		this.profile = profile;
+	}	*/
 
 }

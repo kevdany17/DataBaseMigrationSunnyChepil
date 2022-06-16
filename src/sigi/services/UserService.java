@@ -23,19 +23,36 @@ public class UserService {
 
 	public void execute() {
 		this.migrateUsers();
+		this.migrateMyUsers();
 		
 	}
 	
 	public void migrateUsers() {
 		try {
 			dao = new UserDao(DataSourceFactory.getDataSource("SQLServer"));
+	
 			
 			ArrayList<UserDto> users = dao.getListUsers();
 			
+			
 			for(UserDto dto: users) {
-				System.out.println("Load: User -->"+dto.getUserName()+"\t Password -->"+dto.getPassword());
+				System.out.println("Load: User -->"+dto.getUserName()+"password "+dto.getPassword()/*+" "+dto.getProfile()*/);
 			}
 			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void migrateMyUsers(){
+		try{
+             dao = new UserDao(DataSourceFactory.getDataSource("MySql"));
+
+			 ArrayList<UserDto> myusers = dao.getUser();
+
+			 for (UserDto usedto : myusers) {
+				System.out.println("Carga User"+usedto.getUserName()+"Pass"+usedto.getPassword());
+			 }
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
