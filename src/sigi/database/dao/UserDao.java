@@ -3,8 +3,6 @@ package sigi.database.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.jar.Attributes.Name;
-
 import sigi.database.dto.UserDto;
 import sigi.database.lib.IDataSource;
 
@@ -49,20 +47,21 @@ public class UserDao {
 		return users;
 	}
 
-	public ArrayList<UserDto>getUser(){
-		ArrayList<UserDto> myusers = new ArrayList<UserDto>();
-
+	public boolean setUsers(ArrayList<UserDto> myusers){
+		boolean flag = false;
 		try{
+			String sql = "Insert into users(name,password) VALUES( ?, ?)";
 			for (UserDto u:myusers) {
-				String sql = "Insert into users(name,password) VALUES( ?, ?)";
 				PreparedStatement ps= this.dataSource.getConection().prepareStatement(sql);
-				ps.setString(1,"jonatan.cruz");
-			    ps.setString(2,"Sunnychepill*" );
+				ps.setString(1,u.getUserName());
+			    ps.setString(2,u.getPassword());
 			    ps.executeUpdate();
 			}
+			flag = true;
 		}catch(Exception e) {
 			e.printStackTrace();
-		 } return myusers;
+		} 
+		return flag;
 	} 
 	
 	

@@ -29,8 +29,7 @@ public class MySqlDataSourceImp implements IDataSource {
             instance = new MySqlDataSourceImp();
         }
         return instance;
-
-   }
+    }
 
    public Connection getConection(){
         String connectionUR1 =

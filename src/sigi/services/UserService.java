@@ -11,6 +11,8 @@ public class UserService {
 	private static UserService instance = null;
 	
 	private UserDao dao = null;
+
+	ArrayList<UserDto> users = new ArrayList<UserDto>();
 	
 	private UserService() {}
 	
@@ -32,7 +34,7 @@ public class UserService {
 			dao = new UserDao(DataSourceFactory.getDataSource("SQLServer"));
 	
 			
-			ArrayList<UserDto> users = dao.getListUsers();
+			users = dao.getListUsers();
 			
 			
 			for(UserDto dto: users) {
@@ -46,13 +48,15 @@ public class UserService {
 
 	public void migrateMyUsers(){
 		try{
-             dao = new UserDao(DataSourceFactory.getDataSource("MySql"));
+             dao.setDataSource(DataSourceFactory.getDataSource("MySql"));
 
-			 ArrayList<UserDto> myusers = dao.getUser();
-
-			 for (UserDto usedto : myusers) {
-				System.out.println("Carga User"+usedto.getUserName()+"Pass"+usedto.getPassword());
+			 if(dao.setUsers(this.users)){
+				System.out.println("Insersion con exito");
+			 }else{
+				System.out.println("Error ...");
 			 }
+
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
