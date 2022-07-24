@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import sigi.database.lib.IDataSource;
-
 public class SqlServerDataSourceImp implements IDataSource{
 	
 	//Var Driver connection
@@ -22,7 +21,7 @@ public class SqlServerDataSourceImp implements IDataSource{
 	
 	private final String user = "sa";
 	
-	private final String password = "Data_Base_90.A";
+	private final String password = "123";
 	
 	
 	//Singleton Pattern Implementation

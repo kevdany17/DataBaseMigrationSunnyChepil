@@ -6,10 +6,10 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/kevinhernandez/eclipse-workspace/DataBaseMigration/mssql-jdbc-10.2.1.jre11.jar">
+	<classpathentry kind="lib" path="C:/Users/Alfredo V/Documents/DataBaseMigrationSunnyChepil-feature-alfredo">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="output" path="bin"/>
+	
 </classpath>
